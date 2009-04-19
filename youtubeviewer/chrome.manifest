@@ -1,0 +1,6 @@
+content youtubeviewer                        content/
+overlay chrome://browser/content/browser.xul chrome://youtubeviewer/content/youtubeviewer-overlay.xul
+
+locale	youtubeviewer                        en-US       locale/en-US/
+skin	youtubeviewer	                     classic/1.0 skin/
+

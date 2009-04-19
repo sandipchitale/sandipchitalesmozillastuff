@@ -1,0 +1,9 @@
+<!ENTITY title.text               "Viewer">
+<!ENTITY searchForLabel.text      "Search for:">
+<!ENTITY searchForLabel.accesskey "f">
+<!ENTITY searchButton.label       "Search">
+<!ENTITY searchButton.accesskey   "S">
+<!ENTITY videosLabel.text         "Videos:">
+<!ENTITY videoLabel.text          "Video:">
+<!ENTITY decriptionLabel.text     "Decription:">
+<!ENTITY statusLabel.text         "Ready">

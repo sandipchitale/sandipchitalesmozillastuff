@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://youtubeviewer/skin/youtubeviewer-overlay.css" type="text/css"?>
+<!DOCTYPE overlay SYSTEM "chrome://youtubeviewer/locale/youtubeviewer-overlay.dtd">
+<overlay id="youtubeviewer-overlay"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  <script src="youtubeviewer-overlay.js"/>
+  <menupopup id="menu_ToolsPopup">
+    <menuitem id="youtubeviewer"
+              label="&youtubeviewer;" 
+              oncommand="YouTubeViewerOverlay.onMenuItemCommand(event); ; return false;"/>
+  </menupopup>
+</overlay>

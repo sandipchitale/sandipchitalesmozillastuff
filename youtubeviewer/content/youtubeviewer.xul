@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<!DOCTYPE overlay SYSTEM "chrome://youtubeviewer/locale/youtubeviewer.dtd">
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://youtubeviewer/skin/youtubeviewer.css" type="text/css"?>
+<window id="youtubeviewer" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" width="700" height="670" title="&title.text;">
+    <script src="youtubeviewer.js"/>
+    <command id="cmd_search" oncommand="YouTubeViewer.onSearchCommand(event);"/>
+    <vbox flex="1" align="stretch" class="youtubeviewer">
+        <hbox align="center" class="header">
+            <image src="chrome://youtubeviewer/skin/youtubeviewer.png"/>
+            <label value="&title.text;" class="headertext"/>
+        </hbox>
+        <hbox align="center">
+            <label value="&searchForLabel.text;"
+                   control="search"
+                   accesskey="&searchForLabel.accesskey;"/>
+            <menulist id="search" flex="1" editable="true" label="JavaScript" onfocus="this.inputField.select(); return false;"/>
+            <button label="&searchButton.label;"
+                    accesskey="&searchButton.accesskey;"
+                    command="cmd_search"/>
+        </hbox>
+        <hbox flex="1" align="stretch">
+            <vbox align="stretch">
+	        <hbox align="stretch">
+	            <label flex="1" control="videos" value="&videosLabel.text;"/>
+	            <label id="range"                value=" - "/>
+	        </hbox>
+                <scrollbox flex="1">
+                    <listbox id="videos" flex="1"/>
+                </scrollbox>
+            </vbox>
+            <splitter collapse="before" resizebefore="farthest">
+                <grippy/>
+            </splitter>
+            <vbox flex="1" align="stretch">
+                <vbox flex="1" align="stretch">
+                    <label control="description" value="&videoLabel.text;"/>
+                    <browser id="video"
+                                 type="content"
+                                 src="about:blank"
+                                 flex="1"
+                                 width="425"
+                                 height="355"
+                                 class="viewer"/>
+                </vbox>
+	        <splitter collapse="after">
+                    <grippy/>
+                </splitter>
+                <vbox flex="1" align="stretch">
+                    <label control="description" value="&decriptionLabel.text;"/>
+                    <scrollbox flex="1">
+                        <textbox id="description" flex="1" multiline="true" readonly="true"/>
+                    </scrollbox>
+                </vbox>
+            </vbox>
+        </hbox>
+        <statudbar class="status">
+            <label flex="1" id="status" class="statustext" value="&statusLabel.text;"/>
+	    <progressmeter id="progress" mode="determined" value="0%"/>
+        </statudbar>
+    </vbox>
+</window>

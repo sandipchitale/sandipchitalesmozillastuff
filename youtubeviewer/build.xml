@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="youtubeviewer" default="all" basedir=".">
+    <description>YouTube Viewer for Firefox.</description>
+    <property name="build.dir" value="build"/>
+    <!-- build youtubeviewer -->
+    <target name="-create-youtubeviewer-jar">
+        <echo message="Build youtubeviewer.jar"/>
+        <mkdir dir="${build.dir}"/>
+        <zip destfile="${build.dir}/youtubeviewer.jar">
+            <zipfileset dir="." includes="content/**" />
+            <zipfileset dir="." includes="locale/**" />
+            <zipfileset dir="." includes="skin/**" />
+        </zip>
+    </target>
+    <target name="-gen-manifest">
+        <echo message="Configuring chrome-manifest"/>
+        <mkdir dir="${build.dir}"/>
+        <copy file="chrome.manifest" tofile="${build.dir}/chrome.manifest" overwrite="true"/>
+        <replaceregexp file="${build.dir}/chrome.manifest"
+             match="^(content\s+\S*\s+)(\S*/)$"
+             replace="\1jar:chrome/youtubeviewer.jar!/\2"
+             flags="g" byline="true"/>
+        <replaceregexp file="${build.dir}/chrome.manifest"
+             match="^(skin|locale)(\s+\S*\s+\S*\s+)(.*/)$"
+             replace="\1\2jar:chrome/youtubeviewer.jar!/\3"
+             flags="g" byline="true"/>
+    </target>
+    <target name="-create-youtubeviewer-xpi" depends="-create-youtubeviewer-jar,-gen-manifest">
+        <echo message="Build youtubeviewer.xpi"/>
+        <mkdir dir="${build.dir}"/>
+        <zip destfile="${build.dir}/youtubeviewer.xpi">
+            <zipfileset dir="${build.dir}" includes="youtubeviewer.jar" prefix="chrome" />
+            <zipfileset dir="${build.dir}" includes="chrome.manifest" />
+            <zipfileset dir="."            includes="install.rdf" />
+            <zipfileset dir="."            includes="components/**" />
+        </zip>
+    </target>
+    <target name="all" depends="-create-youtubeviewer-xpi"/>
+
+    <target name="run" depends="clean,all">
+        <exec executable="firefox" osfamily="unix">
+            <arg file="${build.dir}/youtubeviewer.xpi"/>
+        </exec>
+        <exec executable="firefox" osfamily="unix">
+            <arg value="-youtubeviewer"/>
+        </exec>
+        <exec executable="/usr/bin/open" osfamily="mac">
+            <arg value="-b"/>
+            <arg value="org.mozilla.firefox"/>
+            <arg file="${build.dir}/youtubeviewer.xpi"/>
+        </exec>
+        <exec executable="/usr/bin/open" osfamily="mac">
+            <arg value="-b"/>
+            <arg value="org.mozilla.firefox"/>
+            <arg value="-yourtubeviewer"/>
+        </exec>        
+        <exec executable="C:/Program Files/Mozilla Firefox/firefox.exe" osfamily="windows">
+            <arg file="${build.dir}/youtubeviewer.xpi"/>
+        </exec>
+        <exec executable="C:/Program Files/Mozilla Firefox/firefox.exe" osfamily="windows">
+            <arg value="-yourtubeviewer"/>
+        </exec>
+    </target>
+
+    <target name="-clean-youtubeviewer">
+        <echo message="Clean youtubeviewer"/>
+        <delete file="${build.dir}/youtubeviewer.jar" failonerror="false"/>
+        <delete file="${build.dir}/chrome.manifest" failonerror="false"/>
+        <delete file="${build.dir}/youtubeviewer.xpi" failonerror="false"/>
+    </target>
+    <target name="clean" depends="-clean-youtubeviewer"/>
+</project>
