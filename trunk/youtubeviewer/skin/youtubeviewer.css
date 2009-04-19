@@ -1,0 +1,30 @@
+.youtubeviewer {
+	padding: 2px;
+}
+
+.header {
+	background-image: url('background.jpg');
+	background-repeat: repeat-x;
+	padding: 5px;
+}
+
+.headertext {
+	font-family: verdana, arial;
+	font-size: x-large;
+	color: #FFFFFF;
+}
+
+.viewer {
+	border: 1px solid black;
+}
+
+.status {
+	border: 1px solid lightgrey;
+	background-image: url('background.jpg');
+	background-repeat: repeat-x;
+}
+
+.statustext {
+	font-family: verdana, arial;
+	color: #FFFFFF;
+}
