@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://iphone/skin/launch-iphone-emulator.css" type="text/css"?>
+<?xml-stylesheet href="chrome://iphone/skin/iphone.css" type="text/css"?>
+<!DOCTYPE overlay SYSTEM "chrome://iphone/locale/launch-iphone-emulator.dtd">
+<overlay id="iphone-overlay"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+    <script src="launch-iphone-emulator.js"/>
+    <menupopup id="menu_FilePopup">
+    <menuitem id="launch-iphone-emulator"
+              position="4"
+              label="&launch-iphone-emulator-label;" 
+              oncommand="LaunchiPhoneEmulator.onLaunchiPhoneEmulator(event);"/>
+    </menupopup>	
+</overlay>

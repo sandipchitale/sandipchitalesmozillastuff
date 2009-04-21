@@ -1,0 +1,7 @@
+content iphone                               content/
+overlay chrome://browser/content/browser.xul chrome://iphone/content/launch-iphone-emulator.xul
+
+locale  iphone                               en-US       locale/en-US/
+
+skin    iphone                               classic/1.0 skin/
+style   chrome://global/content/customizeToolbar.xul     chrome://iphone/skin/launch-iphone-emulator.css
